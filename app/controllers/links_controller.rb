@@ -23,9 +23,6 @@ class LinksController < ApplicationController
   # POST /links
   def create
     @link = Link.new(link_params)
-    chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map { |range| range.to_a }.flatten
-    @link.update(short_url: 6.times.map { chars.sample }.join)
-
     if @link.save
       redirect_to @link, notice: 'Link was successfully created.'
     else
@@ -47,6 +44,7 @@ class LinksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def link_params
-      params.require(:link).permit(:original_url)
+      chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map { |range| range.to_a }.flatten
+      params.require(:link).permit(:original_url, :expiration_date).merge!(short_url: 6.times.map { chars.sample }.join)
     end
 end

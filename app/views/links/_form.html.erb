@@ -16,6 +16,11 @@
     <%= form.text_field :original_url, id: :link_original_url, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :expiration_date %>
+    <%= form.text_field :expiration_date, id: :link_expiration_date, class: "form-control", "data-provide": 'datepicker' %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
   </div>

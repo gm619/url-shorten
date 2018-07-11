@@ -1,0 +1,7 @@
+clean_links:
+    cron: "*/5 * * * *"
+    class: CleanLinksWorker
+    queue: default
+    description: "Check every day Links to destroy"
+    args: ["Create boxes if next_date is now."]
+

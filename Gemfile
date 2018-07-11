@@ -18,6 +18,13 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 # Bootstrap
 gem 'bootstrap', '~> 4.1.1'
+# Bootstrap DatePicker
+gem 'bootstrap-datepicker-rails'
+# Sidekiq for background jobs
+gem 'sidekiq', '~> 4.1.0'
+# Sidekiq scheduler
+gem 'sidekiq-scheduler', '~> 2.0'
+
 
 
 # Use Uglifier as compressor for JavaScript assets

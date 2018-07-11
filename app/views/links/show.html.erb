@@ -1,14 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row justify-content-around">
+		<div class="col-4">
+			<div>
+				<p id="notice"><%= notice %></p>
+				<p>
+				  <strong>Short url:</strong>
+				  <%= link_to nil, ENV['HOST'] + '/' + @link.short_url %>
+				</p>
+				<p>
+				  <strong>Clicks:</strong>
+				  <table class="table">
+				  	<thead>
+				  		<tr>
+				  			<th class="col">Expiration Date</th>
+				  			<th class="col">Clicks</th>
+				  		</tr>
+				  	</thead>
+				  	<tbody>
+				  		<td><%= @link.expiration_date.strftime('%Y-%m-%d') %></td>
+				  		<td><%= @link.cliks %></td>
+				  	</tbody>
+				  </table>
+				  
+				</p>
 
-<p>
-  <strong>Short url:</strong>
-  <%= link_to nil, ENV['HOST'] + '/' + @link.short_url %>
-</p>
+				<%= button_to 'Back', root_path, method: :get, class: 'btn btn-primary' %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Clicks:</strong>
-  <%= @link.cliks %>
-</p>
-
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', root_path %>

@@ -1,4 +1,18 @@
 <div class="container">
+  <div class="row justify-content-around">
+    <div class="flash-messages-for-ajax">
+      <div class="col-md-8 col-md-offset-2 flash-messages">
+        <% flash.each do |type, message| %>
+          <div class="alert alert-fixed %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= simple_format message, class: 'text-center' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
 	<div class="row justify-content-around">
 		<div class="col-4">
 			<h1>New Link</h1>

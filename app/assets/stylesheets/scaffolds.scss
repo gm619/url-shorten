@@ -82,3 +82,9 @@ div {
 label {
   display: block;
 }
+
+.parsley-required, .parsley-pattern {
+  padding-top: 5px;
+  text-align: center;
+  color: #dc2738;
+}

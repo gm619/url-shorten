@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery3
+//= require parsley
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require flash_message
 //= require rails-ujs
 //= require_tree .

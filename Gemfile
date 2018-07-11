@@ -24,7 +24,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'sidekiq', '~> 4.1.0'
 # Sidekiq scheduler
 gem 'sidekiq-scheduler', '~> 2.0'
-
+# Parsley.js is an awesome form validation library
+gem "parsley-rails"
 
 
 # Use Uglifier as compressor for JavaScript assets

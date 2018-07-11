@@ -22,11 +22,12 @@ class LinksController < ApplicationController
 
   # POST /links
   def create
+    # byebug
     @link = Link.new(link_params)
     if @link.save
       redirect_to @link, notice: 'Link was successfully created.'
     else
-      render :new
+      redirect_to action: :new
     end
   end
 

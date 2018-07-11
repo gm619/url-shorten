@@ -19,7 +19,7 @@
       <tr>
         <td><%= link.short_url %></td>
         <td><%= link.original_url %></td>
-        <td><%= link.expiration_date.strftime('%Y-%m-%d') %></td>
+        <td><%= !link.expiration_date.nil? ? link.expiration_date.strftime('%Y-%m-%d') : "-------------" %></td>
         <td><%= link.cliks %></td>
         <td><%= link_to 'Show', link, class: "btn btn-sm btn-primary", role: "button" %></td>
         <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger", role: "button" %></td>

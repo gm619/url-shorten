@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_link, only: :destroy
 
   # GET /params[:short_url]
@@ -6,6 +7,7 @@ class LinksController < ApplicationController
     @host = request.host
     if params[:short_url]
       @link = Link.find_by(short_url: params[:short_url])
+      return if available(@link)
       if redirect_to @link.original_url
         @link.cliks += 1
         @link.save
@@ -22,8 +24,7 @@ class LinksController < ApplicationController
 
   # POST /links
   def create
-    # byebug
-    @link = Link.new(link_params)
+    @link = current_user.links.new(link_params)
     if @link.save
       redirect_to @link, notice: 'Link was successfully created.'
     else
@@ -38,14 +39,24 @@ class LinksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_link
-      @link = Link.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def link_params
-      chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map { |range| range.to_a }.flatten
-      params.require(:link).permit(:original_url, :expiration_date).merge!(short_url: 6.times.map { chars.sample }.join)
-    end
+  def set_link
+    @link = Link.find(params[:id])
+  end
+
+
+  def link_params
+    chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map { |range| range.to_a }.flatten
+    params
+      .require(:link)
+      .permit(:original_url, :expiration_date, :available_through)
+      .merge!(short_url: 6.times.map { chars.sample }.join)
+  end
+
+  def available(link)
+    Rails.logger.info(Time.now.in_time_zone)
+    Rails.logger.info(link.created_at.in_time_zone + link.available_through)
+
+    Time.now.in_time_zone < link.created_at.in_time_zone + link.available_through
+  end
 end

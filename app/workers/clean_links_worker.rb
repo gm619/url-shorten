@@ -6,7 +6,7 @@ class CleanLinksWorker
   def perform(*args)
     # Do something
     Link.all.each do |link|
-    	link.destroy if link.expiration_date.present? && link.expiration_date.strftime('%Y-%d-%m').to_date < Date.current
+    	link.destroy if link.expiration_date.present? && link.expiration_date.strftime('%Y-%m-%d').to_date < Date.current
     end
   end
 end

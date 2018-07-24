@@ -83,8 +83,19 @@ label {
   display: block;
 }
 
-.parsley-required, .parsley-pattern {
+.parsley-required, .parsley-pattern, .parsley-type {
   padding-top: 5px;
   text-align: center;
   color: #dc2738;
+}
+
+.alert-danger {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border-radius: 0.25rem;
 }

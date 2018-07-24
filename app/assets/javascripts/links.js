@@ -2,5 +2,10 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-	$('#link_expiration_date').datepicker();
+	// debugger;
+	$('#link_expiration_date').datepicker({
+  		format: "dd-mm-yyyy",
+  		autoclose: true,
+  		todayHighlight: true
+	});
 });

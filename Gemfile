@@ -27,6 +27,8 @@ gem 'sidekiq-scheduler', '~> 2.0'
 # Parsley.js is an awesome form validation library
 gem "parsley-rails"
 
+gem 'devise'
+
 
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
